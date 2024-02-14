@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* canvas{
+    display: none;
+} */
+
+.table-container{
+    max-height: 440px;
+    overflow-y: scroll;
+}
+
+#info{
+    display: none;
+}
