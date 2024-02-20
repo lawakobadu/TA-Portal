@@ -11,8 +11,16 @@ if not cap.isOpened():
     exit()
 
 # Inisialisasi Cascade Classifier di luar loop while untuk mengoptimalkan performa
-plate_cascade = cv2.CascadeClassifier(model)
+plate_cascade = cv2.CascadeClassifier(cv2.samples.findFile(model))
 reader = easyocr.Reader(['en'])
+
+# Cek apakah CUDA tersedia
+if cv2.cuda.getCudaEnabledDeviceCount() == 0:
+    print("CUDA tidak tersedia. Menggunakan CPU.")
+    use_cuda = False
+else:
+    print("CUDA tersedia. Menggunakan GPU.")
+    use_cuda = True
 
 while True:
     ret, frame = cap.read()
@@ -22,7 +30,14 @@ while True:
         break
 
     img_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    plates = plate_cascade.detectMultiScale(img_gray, 1.1, 4)
+    
+    if use_cuda:
+        img_gray_cuda = cv2.cuda_GpuMat()
+        img_gray_cuda.upload(img_gray)
+        plates_cuda = plate_cascade.detectMultiScale(img_gray_cuda)
+        plates = plates_cuda.download()
+    else:
+        plates = plate_cascade.detectMultiScale(img_gray, 1.1, 4)
 
     for (x, y, w, h) in plates:
         area = w * h

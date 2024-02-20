@@ -8,9 +8,67 @@
     display: none;
 } */
 
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+.body{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+  }
+  
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+  
+.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
 .table-container{
     max-height: 440px;
     overflow-y: scroll;
+}
+
+.form-control-dark {
+    border-color: var(--bs-gray);
+}
+.form-control-dark:focus {
+    border-color: #fff;
+    box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+}
+
+.text-small {
+    font-size: 85%;
+}
+
+.dropdown-toggle:not(:focus) {
+    outline: 0;
+}
+
+.input-group-identitas {
+    display: none;
+}
+
+section .list-capture{
+    width: auto;
+    height: 100px;
+    justify-content: space-around;
 }
 
 #info{

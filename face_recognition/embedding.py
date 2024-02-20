@@ -5,12 +5,12 @@ import pickle
 name = input("Masukkan nama: ")
 nim = input("Masukkan NIM: ")
 
-try:
-    f = open("/portal/static/ref_name.pkl", "rb")
-    ref_dict = pickle.load(f)
-    f.close()
-except FileNotFoundError:
-    ref_dict = {}
+# try:
+#     f = open("/portal/static/ref_name.pkl", "rb")
+#     ref_dict = pickle.load(f)
+#     f.close()
+# except FileNotFoundError:
+ref_dict = {}
 
 # Auto-increment the ID
 if not ref_dict:
@@ -24,12 +24,12 @@ f = open("/portal/static/ref_name.pkl", "wb")
 pickle.dump(ref_dict, f)
 f.close()
 
-try:
-    f = open("/portal/static/ref_embed.pkl", "rb")
-    embed_dict = pickle.load(f)
-    f.close()
-except FileNotFoundError:
-    embed_dict = {}
+# try:
+#     f = open("/portal/static/ref_embed.pkl", "rb")
+#     embed_dict = pickle.load(f)
+#     f.close()
+# except FileNotFoundError:
+embed_dict = {}
 
 for i in range(5):
     key = cv2.waitKey(1)
